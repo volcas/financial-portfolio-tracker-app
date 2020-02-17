@@ -154,7 +154,7 @@ class Main extends Component {
                     {this.state.formIncompleteError ? <p>Kindly complete the form before adding this stock for tracking.</p> : null}
                     <div className='AddStockForm'>
                         <div className='FormRow'><span className='Label'>Company Name:</span><span>{this.state.selectedStock.name}</span></div>
-                        <div className='FormRow'><span className='Label'>No. of Shares:</span><input id='noShares' type='number' min="1" placeholder='No. of shares' ref={this.NoOfShares} /></div>
+                        <div className='FormRow'><span className='Label'>No. of Shares:</span><input id='nohares' type='number' min="1" placeholder='No. of shares' ref={this.NoOfShares} /></div>
                         <div className='FormRow'><span className='Label'>Buy Price:</span> <input id='buyPrice' type='number' min="1" placeholder='Buying Price' ref={this.BuyingPrice} /></div>
                         <div className='FormRow'><span className='Label'>Buy Date:</span>{this.state.dateError ? <span>{this.state.dateErrorMsg}</span> : null}<input id='buyDate' type='date' onChange={this.dateHandler} ref={this.BuyingDate} /></div>
                     </div>
