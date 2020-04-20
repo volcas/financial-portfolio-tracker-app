@@ -1,17 +1,15 @@
-.AddStockButton{
-  display: flex;
-  padding-top: 10px;
+.AddStockButton {
+    width: 50%;
+    margin-bottom: 15px;
 }
 
-.StockButton{
-    padding: 5px;
-    background-color: #fff;
-    width: 20%;
-    color: #000;
-    border-radius: 5px;
+.StockButton {
+    margin-right: 10px;
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     cursor: pointer;
-}
-
-.stockname{
-    padding-left: 15px;
+    border-radius: 5px;
 }

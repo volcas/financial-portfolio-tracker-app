@@ -1,21 +1,14 @@
-.closebutton{
-    padding: 5px 20px;
-    background-color: red;
-    color: #fff;
-    border-radius: 50px;
+.Close {
+    position: absolute;
+    right: 5%;
+    background-color: #fff;
+    color: #f00;
+    border-radius: 50%;
+    z-index: 100;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 24px;
+    top: 5%;
     cursor: pointer;
-    float: right;
-}
-
-.modalbody{
-height: 350px;
-text-align: center;
-position: fixed; 
-background-color:#fff;
-z-index: 500;
-left: 15%;
-top: 10%; 
-box-sizing: border-box;
-width: 70%;
-overflow-Y: scroll;
 }
