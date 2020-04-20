@@ -8,9 +8,9 @@ class Modal extends Component {
         return (
             <div>
                 <Backdrop />
-                <div className="modalbody">
-                <button className="closebutton" onClick = {() => this.props.close(this.props.modalCloseHandler)}>X</button>
-                    <h3>{this.props.title}</h3>
+                <span className='Close' onClick={this.props.close}>X</span>
+                <div style={{height:'350px', textAlign:'center', position:'fixed', backgroundColor:'#fff', zIndex: 500, left: '15%', top: '10%', boxSizing: 'border-box', width: '70%', overflowY: 'scroll'}}>
+                    <h2>{this.props.title}</h2>
                     {this.props.content}
                 </div>
             </div>
