@@ -1,9 +1,6 @@
-.AddStocks {
-    padding: 0 15%;
-    margin: 15px 0;
-}
 
-.AddStocksTitle {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
+.AddStocksTitle{
+    font-size: x-large;
+    float: left;
+    padding-left: 140px;
+    }
