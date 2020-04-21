@@ -1,37 +1,29 @@
-.AddStockForm {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
+.FormInput{
+    padding:10px
 }
 
-.FormRow {
-    display: flex;
-    margin: 10px 0;
-    justify-content: space-between;
+.Lable{
+   float: left;
+   padding-left: 50px;
 }
 
-.FormRow .Label {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.cname{
+    font-size: 25px;
 }
 
-.FormRow input {
-    height: 20px;
-    outline: none;
-    padding: 5px;
-    border: 1px solid #ddd;
+
+input{
+    width: 40%;
+    padding: 6px 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+  }
+
+  .AddButton{
+    padding: 5px 20px;
+    background-color: green;
+    color: #fff;
     border-radius: 5px;
-}
-
-.FormRow input:hover {
-    border-color: #aaa;
-}
-
-.AddButton {
-    height: 30px;
-    width: auto;
     cursor: pointer;
-    border-radius: 5px;
-}
+  }
+  
