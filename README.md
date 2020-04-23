@@ -1,32 +1,49 @@
-# Webpack Frontend Starterkit
+﻿# Finance Portfolio Tracker
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/wbkd/webpack-starter.svg)](https://greenkeeper.io/)
+## Overview
 
-A lightweight foundation for your next webpack based frontend project.
+A React WebAPP for tracking your financial portfolio, using the Alpha Advantage API and showing the profit and loss for a particular time of a day.
+Using Firebase Firestore as a Database to store the user data for tracking the stocks they want.
 
+[Live Preview](https://financial-portfolio-tracker.firebaseapp.com/)
 
-### Installation
+![](tracker.png)
 
+## Built With
+
+<ul>
+<li> Create React APP </li>
+<li> SASS </li>
+<li> Firebase Firestore DB </li>
+</ul>
+
+## Development
+--------------
+
+Clone the repo and cd into the folder where the repo has been cloned, run ```npm install``` to install all the dependencies
+
+### Usage
+
+1. Get a free API Key at https://www.alphavantage.co
+1. Create a ```.env``` file on the root folder
+
+#### Sample ENV file
+
+```env
+REACT_APP_APIKEY=yourapikey
 ```
-npm install
-```
 
-### Start Dev Server
+Once the dependencies are installed, you can run ```npm start``` to start the application.
 
-```
-npm start
-```
+App will be live at localhost:3000
 
-### Build Prod Version
+## Author
 
-```
-npm run build
-```
+👤 **Shubham Battoo**
 
-### Features:
+* Twitter: [@Shubham_batt](https://twitter.com/Shubham_batt)
+* Github: [@shubhambattoo](https://github.com/shubhambattoo)
 
-* ES6 Support via [babel](https://babeljs.io/) (v7)
-* SASS Support via [sass-loader](https://github.com/jtangelder/sass-loader)
-* Linting via [eslint-loader](https://github.com/MoOx/eslint-loader)
+## Show your support
 
-When you run `npm run build` we use the [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to move the css to a separate file. The css file gets included in the head of the `index.html`.
+Give a ⭐️ if this project helped you!
