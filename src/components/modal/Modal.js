@@ -1,125 +1,108 @@
-import './Modal.scss';
-import React from 'react';
-import { addTrackedStock } from './../../util/data';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      noShares: '',
-      buyPrice: '',
-      buyDate: '',
-      stockId: '',
-      feedback: ''
-    };
-  }
+class Modal extends Component {
 
-  handleInputChange = ev => {
-    const name = ev.target.name;
-    const value = ev.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
+    state = {
+        stockName : null,
+        no_of_shares : 0,
+        buy_price : 0,
+        date : null
 
-  add = () => {
-    const { noShares, buyDate, buyPrice } = this.state;
-    if (!noShares || !buyPrice || !buyDate) {
-      alert('All field(s) are required');
-      return;
     }
-    const { name, symbol } = this.props.stock;
-    const doc = {
-      numberOfShares: parseInt(noShares, 10),
-      buyPrice: parseFloat(buyPrice),
-      buyDate: new Date(buyDate),
-      stockName: name,
-      stockSymbol: symbol
-    };
 
-    addTrackedStock(doc, this.props.stock.id)
-      .then(data => {
-        if (data && data.message) {
-          this.props.onModalHide(true);
-          return;
-        }
-        // console.log(typeof data);
-        this.props.onModalHide(false, doc);
-      })
-      .catch(err => {
-        console.log(err);
-        // console.log('failed');
-        if (err === 5) {
-          this.props.onModalHide(true);
-          return;
-        }
-        alert('could not add document');
-      });
-  };
 
-  render() {
-    return (
-      <div className="modal-container">
-        <div className="modal AddStockForm">
-          <div className="modal__header">
-            <h3>
-              Add <span className="text-cap">{this.props.stock.name}</span> to
-              my Stocks
-            </h3>
-            <div className="close" onClick={() => this.props.onModalHide(false, undefined)}>&times;</div>
-          </div>
-          <div className="modal__content">
-            <div className="add-form">
-              <div className="field">
-                <label htmlFor="name">Company Name</label>
-                <div className="text-cap">{this.props.stock.name}</div>
-              </div>
-              <div className="field">
-                <label htmlFor="name">No. of Shares</label>
-                <input
-                  type="number"
-                  name="noShares"
-                  id="noShares"
-                  placeholder="No. of Shares"
-                  onChange={this.handleInputChange}
-                />
-              </div>
-              <div className="field">
-                <label htmlFor="name">Buy Price</label>
-                <input
-                  type="number"
-                  name="buyPrice"
-                  id="buyPrice"
-                  placeholder="Buying Price"
-                  onChange={this.handleInputChange}
-                />
-              </div>
-              <div className="field">
-                <label htmlFor="name">Buy Date</label>
-                <input
-                  type="date"
-                  name="buyDate"
-                  onChange={this.handleInputChange}
-                  id="buyDate"
-                />
-              </div>
-              <div className="field center">
-                <button className="AddButton" onClick={this.add}>
-                  Add
-                </button>
-              </div>
+    closeModal = (event)=>{
+       this.props.closeModal(event) && this.props.closeModal();
+
+    }
+
+    addStock = (event)=>{
+       
+        console.log(this.props.currentPrice);
+        
+        let profitloss = (this.props.currentPrice - this.state.buy_Price) * (this.state.no_Of_Shares);
+        let firebase_Data = {
+
+        stockName : this.props.stockName,
+        currentPrice : this.props.currentPrice,
+        buy_Price : this.state.buy_Price,
+        no_Of_Shares : this.state.no_Of_Shares,
+        date : this.state.date,
+        profitloss : profitloss,
+        symbol : this.props.symbol
+
+        }
+
+        axios.post('https://financialtracker-db23c.firebaseio.com/users.json',firebase_Data).then(response =>{
+            this.closeModal();
+            
+        }).catch(error => console.log(error));
+
+        
+    }
+
+    handleInput = (event) =>{
+        
+        let value = event.target.value;
+        if(event.target.name === "no_Of_Shares"){
+            this.setState({
+                no_Of_Shares : value
+
+            });
+        }
+
+        else if(event.target.name === "buy_price"){
+            this.setState({
+                buy_Price : value
+            });
+        }
+
+        else if(event.target.name === "date"){
+            this.setState({
+                date : value
+            });
+        
+        }
+
+    }
+
+    render() {
+        if(!this.props.flag){
+            return null;
+        }
+        return (
+
+            <div>
+                
+                <div style={{height: '500px', textAlign: 'center', position: 'fixed', 
+                        backgroundColor: '#D3D3D3', zIndex: '500', left: '15%', top: '15%', 
+                        boxSizing: 'border-box', width: '70%', borderRadius:'10px'}}>
+                            <button type="button" className="close" onClick={this.closeModal}>&times;</button>
+                        <h2>Add {this.props.stockName} to My Stocks</h2>  <br/><br/>  
+                        <form>
+                            <label htmlFor='name'> <strong>Company Name</strong></label> : <strong>{this.props.stockName}</strong><br/><br/>
+                            
+                            <label htmlFor="name"><strong>No. of Shares</strong></label> : <input id='noShares' type='number' placeholder='No. of Shares'
+                                    name='no_Of_Shares'  onChange = {this.handleInput} ></input>
+                                <br/><br/>
+        
+                         <label htmlFor="name"><strong>Buy Price</strong></label> : <input type="number" id='buyPrice' placeholder='Buying Price'
+                                    name='buy_price' onChange = {this.handleInput}   ></input>
+                                <br/><br/>
+                            <label htmlFor="name"><strong>Buy Date</strong></label> : <input type='Date' id='buyDate' name='date' onChange = {this.handleInput}
+                                    ></input>
+                            <br/><br/>
+                            
+                        </form>
+                       
+                        <button type='button' className='btn btn-primary' id='addForm' onClick={this.addStock}>Add</button>
+                       <button type="button" className='closeButton' style={{backgroundColor:"red",height:"40px",textAlign:"center",padding:"5px",color:"white",borderRadius:"2px"}} id="closeBtn" onClick={this.closeModal}>Close</button><br/><br/>
+                       <div id="errorMsg"></div>
+                 </div>
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+        )
+    }
 }
 
 export default Modal;
-
-Modal.propTypes = {
-  stock: PropTypes.object.isRequired,
-  onModalHide: PropTypes.func.isRequired
-}
