@@ -1,15 +1,18 @@
-import React, { Component } from "react";
-import "./App.css";
-import Main from "./pages/Main/Main";
+import React from 'react';
 
- class App extends Component {
-  render() {
+import Header from './components/Header/Header';
+import Body from './components/Body/Body'
+import ModalContainer from './components/ModalContainer/ModalContainer';
+// import ReduxComp from './components/ReduxComp/ReduxComp';
+export default function App(){
     return (
-      <div className="App">
-        <Main />
-      </div>
-    );
-  }
+       
+              <div> 
+            <Header/>
+            <Body/>
+            <ModalContainer/>
+             </div>
+       
+        
+    )
 }
-
-export default App;
