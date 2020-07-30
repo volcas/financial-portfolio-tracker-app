@@ -13,13 +13,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "webpack": "webpack-dev-server --open",
-    "start": "npm run build && npm run webpack"
+    "start": "webpack-dev-server --open --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "firebase": "^7.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

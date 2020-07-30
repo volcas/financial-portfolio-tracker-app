@@ -7,7 +7,7 @@ module.exports = {
         path: path.resolve(__dirname, 'public'),
         filename: 'index_bundle.js'
     },
-    devServer: {
+devServer: {
         inline: true,
         port:3000
       },
