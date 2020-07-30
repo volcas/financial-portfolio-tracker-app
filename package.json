@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "webpack": "webpack-dev-server --open",
-    "start": "yarn run build"
+    "start": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
